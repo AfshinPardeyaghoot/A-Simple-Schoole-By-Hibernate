@@ -12,10 +12,10 @@ public class Teacher {
     @Column(name = "id")
     private Integer id ;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name",nullable = false)
     private String firstName ;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name",nullable = false)
     private String lastName ;
 
     @Column(name = "teacher_code",unique = true , nullable = false)
@@ -24,7 +24,7 @@ public class Teacher {
     @Column(name = "salary",nullable = false)
     private Double salary ;
 
-    @Column(name = "birth_date")
+    @Column(name = "birth_date",nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate ;
 
