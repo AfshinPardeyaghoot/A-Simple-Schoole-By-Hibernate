@@ -28,6 +28,10 @@ public class Teacher {
     @Temporal(TemporalType.DATE)
     private Date birthDate ;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_teacher_address",nullable = false)
+    private Address address ;
+
     public Integer getId() {
         return id;
     }

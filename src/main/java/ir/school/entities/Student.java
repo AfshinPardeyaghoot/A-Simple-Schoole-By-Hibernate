@@ -2,6 +2,7 @@ package ir.school.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -24,6 +25,26 @@ public class Student {
     @Column(name = "birth_date",nullable = false)
     @Temporal(TemporalType.DATE)
     private Date birthDate ;
+
+    @ManyToMany
+    @JoinTable(
+            name = "student_teacher",
+            joinColumns = @JoinColumn(name = "fk_student_id"),
+            inverseJoinColumns = @JoinColumn(name = "fk_teacher_id")
+    )
+    private Set<Teacher> teachers ;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_student_address",nullable = false)
+    private Address address ;
+
+    public Set<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(Set<Teacher> teachers) {
+        this.teachers = teachers;
+    }
 
     public Integer getId() {
         return id;

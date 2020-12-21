@@ -1,6 +1,7 @@
 package ir.school.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -25,6 +26,9 @@ public class Address {
 
     @Column(name = "postal_address")
     private String postalAddress ;
+
+    @ManyToMany(mappedBy = "teachers")
+    private Set<Student> students ;
 
     public Integer getId() {
         return id;
