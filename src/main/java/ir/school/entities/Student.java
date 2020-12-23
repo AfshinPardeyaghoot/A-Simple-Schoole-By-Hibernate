@@ -26,17 +26,32 @@ public class Student {
     @Temporal(TemporalType.DATE)
     private Date birthDate ;
 
-    @ManyToMany
-    @JoinTable(
-            name = "student_teacher",
-            joinColumns = @JoinColumn(name = "fk_student_id"),
-            inverseJoinColumns = @JoinColumn(name = "fk_teacher_id")
-    )
+    @ManyToMany(mappedBy = "students" , cascade = CascadeType.ALL)
     private Set<Teacher> teachers ;
 
-    @ManyToOne
-    @JoinColumn(name = "fk_student_address",nullable = false)
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+   @ManyToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "fk_student_address",nullable = false)
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, mappedBy="student")
     private Address address ;
+
+    public Student(String firstName, String lastName, Integer studentCode, Date birthDate, Address address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.studentCode = studentCode;
+        this.birthDate = birthDate;
+        this.address = address;
+    }
+
+    public Student() {
+    }
 
     public Set<Teacher> getTeachers() {
         return teachers;

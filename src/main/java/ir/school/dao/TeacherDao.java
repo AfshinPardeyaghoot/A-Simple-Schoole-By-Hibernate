@@ -11,6 +11,6 @@ public class TeacherDao extends AbstractEntityDao<Teacher,Integer> {
 
     @Override
     public Class<Teacher> getClassType() {
-        return null;
+        return Teacher.class;
     }
 }

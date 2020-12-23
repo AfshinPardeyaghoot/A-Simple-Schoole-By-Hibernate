@@ -10,6 +10,6 @@ public class AddressDao extends AbstractEntityDao<Address,Integer> {
 
     @Override
     public Class<Address> getClassType() {
-        return null;
+        return Address.class;
     }
 }

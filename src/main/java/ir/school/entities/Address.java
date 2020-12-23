@@ -27,8 +27,22 @@ public class Address {
     @Column(name = "postal_address")
     private String postalAddress ;
 
-    @ManyToMany(mappedBy = "teachers")
-    private Set<Student> students ;
+
+    public Address() {
+    }
+
+    public Address(String number, String state, String city, String postalCode, String postalAddress) {
+        this.number = number;
+        this.state = state;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.postalAddress = postalAddress;
+    }
+
+    public Address(String number, String city) {
+        this.number = number;
+        this.city = city;
+    }
 
     public Integer getId() {
         return id;
